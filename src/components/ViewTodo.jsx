@@ -9,21 +9,30 @@ const ViewTodo = () => {
             "todos": []
         }
     )
+const [loading, setLoading] = useState(true)
+
+    
 
     const fetchData = () => {
         axios.get("https://dummyjson.com/todos").then(
             (response) => {
                 changeTodo(response.data)
+                setLoading(false)
             }
         ).catch(
             ()=>
             {
                 alert("Something went wrong")
+                setLoading(false)
             }
         )
     }
 
+
+
     useEffect(() => { fetchData() }, [])
+
+
 
 
     return (
@@ -31,6 +40,14 @@ const ViewTodo = () => {
             <Navbar />
 
             <div className="container">
+                {loading ? (
+                    <div className="text-center">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <p className="mt-2">Fetching your TODO list...</p>
+                    </div>
+                ) :
                 <div className="row">
                     <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
 
@@ -72,6 +89,7 @@ const ViewTodo = () => {
 
                     </div>
                 </div>
+}
             </div>
 
         </div>
