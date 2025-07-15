@@ -39,8 +39,8 @@ const ViewTodo = () => {
 
 
                                         <div class="card">
-                                            <div class="card-header text-center">
-                                                {value.id}
+                                            <div class="card-header text-left">
+                                                {value.id}.
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{value.todo}</h5>
