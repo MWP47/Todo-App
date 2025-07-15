@@ -15,7 +15,12 @@ const ViewTodo = () => {
             (response) => {
                 changeTodo(response.data)
             }
-        ).catch()
+        ).catch(
+            ()=>
+            {
+                alert("Something went wrong")
+            }
+        )
     }
 
     useEffect(() => { fetchData() }, [])
@@ -44,7 +49,7 @@ const ViewTodo = () => {
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">{value.todo}</h5>
-                                                <p class="card-text">{value.userId}</p>
+                                                <p class="card-text">User-ID: {value.userId}</p>
 
                                                 <button
                                                     className={`btn ${value.completed ? 'btn-success' : 'btn-danger'}`}
